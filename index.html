@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZapCart | Pro Energy</title>
+    <!-- Sharp Inter Web Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Awwwards Interactive CDNs -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Loading Preloader (Awwwards classic) -->
+    <div class="preloader">
+        <div class="preloader-text">ZAPCART</div>
+    </div>
+
+    <!-- Custom Canvas Cursor (Bruno Simon / Awwwards vibe) -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar magnetic" id="navbar">
+        <div class="nav-container">
+            <!-- Magnetic hover wrapper for links -->
+            <div class="logo magnetic-item" data-strength="20">
+                 <img src="public/assets/transparent logo (1).png" alt="ZapCart Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#hardware" class="magnetic-item" data-strength="20">How It Works</a>
+                <a href="#stats" class="magnetic-item" data-strength="20">Performance</a>
+                <a href="#pricing" class="magnetic-item" data-strength="20">Pricing</a>
+                <a href="#fleet" class="magnetic-item" data-strength="20">Fleet</a>
+                <a href="#pricing" class="btn-pill magnetic-item" data-strength="40">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Lenis Smooth Scroll Wrapper -->
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero: Tesla Full Bleed + Awwwards Kinetic Typography -->
+            <section class="hero-section" id="hero">
+                <div class="hero-bg parallax-bg">
+                     <video autoplay muted loop playsinline>
+                        <source src="public/assets/ZapCart_Mobile_EV_Charging_Ad.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="stagger-text">
+                        <span class="line"><span>Power.</span></span>
+                        <span class="line"><span>Delivered.</span></span>
+                    </h1>
+                    <p class="hero-sub fade-up" style="max-width: 800px; margin: 2rem auto 0; line-height: 1.4;">Mobile EV charging that comes to you. Fast, reliable, and sustainable charging for the on-demand economy.</p>
+                </div>
+            </section>
+
+            <!-- Playful 3D Scroll Pop (Bruno vibe) -->
+            <section class="playful-intro dark-bg">
+                <div class="container text-center">
+                    <h2 class="massive-text scroll-scale" style="font-size: 6vw;">Request Service.</h2>
+                    <p class="fade-up" style="margin-top: 2rem; font-size: 1.5rem; color: #888; max-width: 800px; margin: 2rem auto 0;">Open our app, enter your location, and schedule charging at your convenience. Real-time availability and instant booking.</p>
+                </div>
+            </section>
+
+            <!-- Fixed Image Layout (Apple Architecture + Object-Fit Fixes + 3D Hover) -->
+            <section class="hardware-section light-bg" id="hardware">
+                <div class="container">
+                    
+                    <div class="hardware-layout">
+                        <div class="hw-text">
+                            <h2 class="fade-up">We Come<br>To You.</h2>
+                            <p class="fade-up">Our mobile fast-charging unit arrives at your location. Track your service technician in real-time with live updates.</p>
+                        </div>
+                        <!-- 3D Tilt Image Wrapper (Fixes image stretching natively) -->
+                        <div class="hw-image tilt-container">
+                            <div class="tilt-element">
+                                <img src="public/assets/zapcart_unit.png" alt="ZapCart Unit">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hardware-layout reverse" style="margin-top: 250px;">
+                        <div class="hw-text">
+                            <h2 class="fade-up">Fast &<br>Secure.</h2>
+                            <p class="fade-up">Get up to 50kW DC fast charging while you work, shop, or relax. Professional technicians with certified equipment.</p>
+                        </div>
+                        <div class="hw-image tilt-container">
+                            <div class="tilt-element">
+                                <img src="public/assets/charging_cable.png" alt="Charging Cable">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Fullscreen Video Film Modal -->
+            <div class="video-modal" id="videoModal">
+                <button class="close-modal" id="closeModal">&times;</button>
+                <div class="video-container-modal">
+                    <video id="fullVideo" controls playsinline>
+                        <source src="public/assets/Mobile_EV_Charging (1) (1).mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- Edge to Edge Parallax Scroll Reveal -->
+            <section class="video-showcase" id="playVideoBtn" style="position: relative; cursor: pointer;">
+                <div class="play-overlay fade-up">
+                    <div class="play-button magnetic-item" data-strength="30">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="white" style="margin-left: 5px;"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <h3 style="margin-top: 1.5rem; color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700;">Watch the Film</h3>
+                </div>
+                <div class="container" style="max-width: 100%; padding: 0; pointer-events: none;">
+                     <div class="video-wrapper parallax-bg" style="border-radius: 0;">
+                         <!-- Background dimming overlay for high contrast readability -->
+                         <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 5;"></div>
+                         <video autoplay muted loop playsinline id="bgVideo" style="z-index: 1; position: relative;">
+                            <source src="public/assets/Mobile_EV_Charging (1) (1).mp4" type="video/mp4">
+                        </video>
+                     </div>
+                </div>
+            </section>
+
+            <!-- Floating Bento Grid (Apple Structure + Bruno Physics) -->
+            <section class="bento-section light-bg" id="stats">
+                <div class="container">
+                    <div class="bento-grid">
+                        <div class="bento-box bento-large dark-box tilt-container">
+                             <div class="tilt-element">
+                                 <h3>24/7 Availability.</h3>
+                                 <p>Round-the-clock service whenever you need power.</p>
+                                 <img src="public/assets/zapcart image.png" alt="ZapCart App" style="margin-top:40px; width:100%; border-radius: 12px; object-fit: contain; max-height: 350px;">
+                             </div>
+                        </div>
+                        <div class="bento-box bento-small light-gray-box tilt-container">
+                             <div class="tilt-element text-center">
+                                 <h1 style="font-size: 4.5vw; color:#0071e3; letter-spacing: -1px;">98%</h1>
+                                 <p>On-time arrival rating.</p>
+                             </div>
+                        </div>
+                        <div class="bento-box bento-small dark-box tilt-container">
+                             <div class="tilt-element text-center">
+                                 <h1 style="font-size: 4.5vw; color:#00ff66; letter-spacing: -1px;">100%</h1>
+                                 <p>Sustainable clean energy.</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="pricing-section dark-bg" id="pricing">
+                <div class="container text-center">
+                    <h2 class="massive-text glow-text fade-up" style="font-size: 7vw;">Full Transparency.</h2>
+                    <p class="fade-up" style="margin: 2rem auto 4rem; font-size: 1.5rem; color: #888;">No hidden fees, predictable costs, flexible payment.</p>
+                    
+                    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 5rem;" class="fade-up">
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 4rem; border-radius: 24px; flex: 1; min-width: 300px; max-width: 500px; text-align: left;" class="tilt-container">
+                            <div class="tilt-element" style="background: transparent; box-shadow: none; transform: none !important;">
+                                <h3>Individual</h3>
+                                <h1 style="font-size: 3.5rem; margin: 1rem 0;">$0 <span style="font-size: 1rem; color: #888;">/mo</span></h1>
+                                <p style="color: #bbb; line-height: 1.6; margin-bottom: 2rem;">Pay-per-charge with no monthly commitment. 24/7 service availability, real-time tracking, carbon credit tracking.</p>
+                                <a href="#" class="btn-pill magnetic-item" style="display: block; text-align: center; background: rgba(255,255,255,0.1);" data-strength="20">Get Started</a>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #0071e3; padding: 4rem; border-radius: 24px; flex: 1; min-width: 300px; max-width: 500px; text-align: left;" class="tilt-container">
+                            <div class="tilt-element" style="background: transparent; box-shadow: none; transform: none !important;">
+                                <h3>Premium</h3>
+                                <h1 style="font-size: 3.5rem; margin: 1rem 0; color: #fff;">$29 <span style="font-size: 1rem; opacity: 0.8;">/mo</span></h1>
+                                <p style="color: #fff; line-height: 1.6; margin-bottom: 2rem; font-weight: 500;">Unlimited charging with priority service. All individual features plus 20% discount on all charges and priority dispatch.</p>
+                                <a href="#" class="btn-massive magnetic-item" style="display: block; text-align: center; padding: 15px; background: #fff; color: #000;" data-strength="20">Subscribe Now</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Fleet Addition -->
+                    <div id="fleet" class="fade-up" style="background: url('public/assets/zapcart image.png') center/cover; position: relative; border-radius: 24px; overflow: hidden; padding: 4rem; text-align: left;">
+                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 1;"></div>
+                        <div style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                            <div>
+                                <h2 style="font-size: 3rem;">Become a Partner.</h2>
+                                <p style="font-size: 1.25rem; color: #ccc; max-width: 500px; margin-top: 1rem;">Join our network of mobile charging operators. 500+ Active partners, 85% Profit margin, 24h Setup time.</p>
+                            </div>
+                            <a href="#" class="btn-pill magnetic-item" style="padding: 15px 30px; font-size: 1.25rem;" data-strength="20">Join the Fleet</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer dark-bg" style="padding-bottom: 5vh; padding-top: 10vh; position: relative; overflow: hidden;">
+                <!-- Huge Watermark text fixed behind the footer content -->
+                <div class="parallax-bg" style="position: absolute; bottom: -8%; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; font-size: 22vw; line-height: 0.8; font-weight: 900; color: #fff; opacity: 0.03; pointer-events: none; z-index: 0; white-space: nowrap;">ZAPCART</div>
+                
+                <div class="container">
+                    
+                    <div style="display: flex; gap: 4rem; justify-content: space-between; flex-wrap: wrap; margin-bottom: 4rem; text-align: left; position: relative; z-index: 10;">
+                        <!-- Brand Info & Sub-Nav Links -->
+                        <div style="flex: 1; min-width: 250px;">
+                            <img src="public/assets/transparent logo (1).png" alt="ZapCart Logo" style="height: 32px; filter: brightness(0) invert(1); margin-bottom: 1.5rem;">
+                            <p style="color: #bbb; max-width: 300px; line-height: 1.6;">Power Delivered, Anytime, Anywhere. Sustainable mobile EV charging for the on-demand economy.</p>
+                            
+                            <!-- Retaining the navbar jump links per previous user request -->
+                            <div style="display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;">
+                                <a href="#hardware" class="magnetic-item" style="color: #fff; text-decoration: none; font-size: 0.9rem;" data-strength="10">How It Works</a>
+                                <a href="#stats" class="magnetic-item" style="color: #fff; text-decoration: none; font-size: 0.9rem;" data-strength="10">Performance</a>
+                                <a href="#pricing" class="magnetic-item" style="color: #fff; text-decoration: none; font-size: 0.9rem;" data-strength="10">Pricing</a>
+                                <a href="#fleet" class="magnetic-item" style="color: #fff; text-decoration: none; font-size: 0.9rem;" data-strength="10">Fleet</a>
+                            </div>
+                        </div>
+
+                        <!-- ZapCart Original Footer Links Grid -->
+                        <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+                            <div style="min-width: 120px;">
+                                <h4 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 700;">Company</h4>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">About Us</a>
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Careers</a>
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Press</a>
+                                </div>
+                            </div>
+                            
+                            <div style="min-width: 120px;">
+                                <h4 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 700;">Legal</h4>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms of Service</a>
+                                </div>
+                            </div>
+
+                            <div style="min-width: 120px;">
+                                <h4 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 700;">Contact</h4>
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Support</a>
+                                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Fleet Sales</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="position: relative; z-index: 10; text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <p style="color: #666; font-size: 0.9rem;">&copy; 2026 ZapCart. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
