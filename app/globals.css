@@ -1,0 +1,428 @@
+/* Awwwards x Apple x Tesla x Bruno Style */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-light: #ffffff;
+    --bg-gray: #f5f5f7;
+    --primary: #0071e3;
+    --text-dark: #1d1d1f;
+    --text-light: #ffffff;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    cursor: none; /* Replaced by custom JS dot cursor */
+}
+
+/* Base custom cursors */
+.cursor {
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-light);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    mix-blend-mode: exclusion;
+}
+
+.cursor-follower {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+    mix-blend-mode: exclusion;
+}
+
+.cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+}
+.cursor-follower.hover {
+    display: none;
+}
+
+/* GSAP Preloader */
+.preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: #000;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preloader-text {
+    font-size: 5vw;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    overflow: hidden;
+}
+
+/* Global Sections & Colors */
+.light-bg { background-color: var(--bg-light); color: var(--text-dark); }
+.dark-bg { background-color: var(--bg-dark); color: var(--text-light); }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 4vw; }
+.text-center { text-align: center; }
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 2vw 4vw;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+}
+.logo img { height: 48px; filter: brightness(0) invert(1); transition: filter 0.3s; }
+.light-bg-nav .logo img { filter: brightness(0); }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+.light-bg-nav .nav-links a { color: #000; }
+.light-bg-nav .btn-pill { color: #fff !important; }
+
+.btn-pill {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 999px;
+    display: inline-block;
+    transition: transform 0.2s, background 0.3s;
+}
+.btn-pill:hover { background: #0066cc; }
+
+/* Magnetic items default */
+.magnetic-item { display: inline-block; cursor: none; }
+
+/* Hero Section (Tesla full bleed) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-bg {
+    position: absolute;
+    top: -10%; left: -10%;
+    width: 120%; height: 120%; /* Expanded for GSAP Parallax tracking */
+    z-index: 0;
+}
+.hero-bg video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+.hero-overlay {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5); z-index: 1;
+}
+.hero-content {
+    position: relative; z-index: 2;
+    text-align: center; color: #fff;
+}
+.stagger-text {
+    font-size: 10vw;
+    line-height: 0.9;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+.stagger-text .line { overflow: hidden; display: block; }
+.stagger-text .line span { display: inline-block; transform: translateY(100%); }
+
+.hero-sub {
+    font-size: 1.5rem; margin-top: 2rem; opacity: 0; transform: translateY(20px);
+}
+
+/* Playful Intro */
+.playful-intro { padding: 15vh 0; }
+.massive-text {
+    font-size: 8vw;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+}
+
+/* Hardware Layout (Fixing image stretching via proper Object-Fit in 3D wrappers) */
+.hardware-section { padding: 15vh 0; }
+.hardware-layout {
+    display: flex;
+    align-items: center;
+    gap: 8vw;
+}
+.hardware-layout.reverse { flex-direction: row-reverse; }
+
+.hw-text { flex: 1; }
+.hw-text h2 { font-size: 4vw; line-height: 1.05; margin-bottom: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+.hw-text p { font-size: 1.25rem; color: #666; max-width: 450px; line-height: 1.5; }
+
+/* 3D Tilt Wrapper */
+.hw-image {
+    flex: 1;
+    perspective: 1200px;
+}
+.tilt-element {
+    background: #fff;
+    border-radius: 24px;
+    padding: 60px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.06);
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+/* PERFECT CONTAINMENT: Eliminates stretching entirely */
+.tilt-element img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    transform: translateZ(60px) scale(1.05); /* Protrudes off the card in 3D */
+    display: block;
+}
+
+.hardware-layout.reverse .tilt-element {
+    background: #111;
+}
+
+/* Edge to Edge Video Parallax */
+.video-showcase {
+    height: 100vh;
+    overflow: hidden;
+}
+.video-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+.video-wrapper video {
+    width: 100%;
+    height: 130%; /* Exceed bounds for parallax movement */
+    object-fit: cover;
+    position: absolute;
+    top: -15%;
+}
+
+/* Floating Bento (Bruno Box feel) */
+.bento-section { padding: 15vh 0; }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 350px);
+    gap: 20px;
+}
+.bento-box {
+    border-radius: 24px;
+    perspective: 1000px;
+}
+.bento-large { grid-column: span 2; grid-row: span 2; }
+.bento-small { grid-column: span 1; grid-row: span 1; }
+
+.dark-box .tilt-element { background: #111; color: #fff; height: 100%; width: 100%; padding: 50px; box-shadow:none;}
+.light-gray-box .tilt-element { background: var(--bg-gray); color: #000; height: 100%; width: 100%; padding: 50px; box-shadow:none;}
+.tilt-element h3 { font-size: 2vw; }
+.tilt-element p { color: #888; font-size: 1.1rem; }
+
+/* Pricing */
+.pricing-section { padding: 25vh 0; overflow: hidden;}
+.btn-massive {
+    display: inline-block;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    padding: 24px 72px;
+    border-radius: 999px;
+    font-size: 2vw;
+    font-weight: 700;
+    text-decoration: none;
+}
+.glow-text {
+    background: linear-gradient(90deg, #0071e3, #00ff66);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Huge Footer */
+.footer { padding: 10vh 0; overflow: hidden; }
+.footer-brand {
+    font-size: 15vw;
+    opacity: 0.05;
+    margin-bottom: 2rem;
+    transform: translateY(20px);
+}
+
+/* Video Play Button Overlay */
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none; /* Let clicks pass through if needed, though button captures */
+}
+.play-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+    pointer-events: auto;
+}
+.play-button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+/* Modal for Pure Fullscreen Video */
+.video-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: rgba(0,0,0,0.95);
+    z-index: 200000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    cursor: default !important;
+}
+.video-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer !important;
+    z-index: 10;
+    transition: opacity 0.3s, transform 0.2s;
+}
+.close-modal:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+.video-container-modal {
+    width: 90%;
+    max-width: 1600px;
+    max-height: 90vh;
+}
+.video-container-modal video {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+.video-container-modal video::-webkit-media-controls-panel {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+/* Responsive Architectures */
+@media (max-width: 1024px) {
+    .container { padding: 0 5vw; }
+    .nav-links { gap: 1.5rem; }
+    .btn-pill { padding: 8px 18px; font-size: 13px; }
+    .tilt-element { padding: 40px; }
+    .hardware-layout, .hardware-layout.reverse { gap: 4vw; }
+}
+
+@media (max-width: 768px) {
+    /* Layout reflows */
+    .hardware-layout, .hardware-layout.reverse { flex-direction: column; text-align: center; }
+    .hw-text { margin-bottom: 2rem; }
+    .hw-text p { margin-left: auto; margin-right: auto; max-width: 100%; }
+
+    /* Bento logic */
+    .bento-grid { display: flex; flex-direction: column; gap: 15px; }
+    .bento-box { height: auto; }
+    .dark-box .tilt-element, .light-gray-box .tilt-element { padding: 30px; }
+    .tilt-element img { height: 250px; margin-top: 20px; }
+
+    /* Typography scaling */
+    .hw-text h2 { font-size: 10vw; }
+    .stagger-text { font-size: 16vw; }
+    .massive-text { font-size: 12vw !important; }
+    .hero-sub { font-size: 1.1rem; padding: 0 1rem; }
+    .preloader-text { font-size: 10vw; }
+
+    /* Navbar optimization for minimal real-estate */
+    .nav-links a:not(.btn-pill) { display: none; }
+    .nav-container { padding: 0 2vw; }
+    .navbar { padding: 4vw 0; }
+
+    /* Disable Heavy Physics on Mobile to save battery and layout constraints */
+    .cursor, .cursor-follower { display: none !important; }
+    body, .magnetic-item { cursor: auto !important; }
+    .tilt-element { transform: none !important; transition: none !important; }
+
+    /* Inline Cleanup Overrides */
+    .hardware-section, .bento-section, .pricing-section { padding: 10vh 0; }
+    #pricing .tilt-container { padding: 2rem !important; }
+    #pricing h1 { font-size: 2.2rem !important; }
+    #pricing .btn-massive { padding: 15px 15px !important; font-size: 1.2rem; width: 100%; }
+
+    #fleet { padding: 2rem !important; text-align: center !important; }
+    #fleet > div:nth-child(2) { justify-content: center !important; flex-direction: column; text-align: center; }
+    #fleet h2 { font-size: 2.2rem !important; }
+    #fleet .btn-pill { width: 100%; }
+
+    /* Footer inline responsive repair */
+    .footer .container > div:nth-child(2) { flex-direction: column; gap: 2rem !important; }
+    .footer .container > div:nth-child(2) > div { min-width: 100% !important; text-align: center; }
+    .footer h4 { margin-bottom: 0.5rem !important; }
+}
