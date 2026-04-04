@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^16.2.2",
     "gsap": "^3.12.2",
     "lenis": "^1.1.14",
     "next": "^15.3.0",
